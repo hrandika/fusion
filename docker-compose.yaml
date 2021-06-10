@@ -1,0 +1,50 @@
+version: "3"
+networks:
+  fusion-network:
+volumes:
+  fusion-postgresql:
+    driver: local
+  fusion-pgadmin:
+    driver: local
+services:
+  postgresql:
+    image: postgres:12.1
+    container_name: fusion-postgresql
+    volumes:
+      - fusion-postgresql:/var/lib/postgresql/data/
+    networks:
+      - fusion-network
+    environment:
+      POSTGRES_DB: fusion
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: dpage/pgadmin4:4.30
+    container_name: fusion-pgadmin
+    logging:
+      driver: none
+    volumes:
+      - fusion-pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@fusion.local
+      PGADMIN_DEFAULT_PASSWORD: "Nice11!!Look"
+    networks:
+      - fusion-network
+    ports:
+      - 8081:80
+  # minio:
+  #   image: minio/minio:RELEASE.2021-05-26T00-22-46Z
+  #   container_name: seediling-minio
+  #   volumes:
+  #     - ./data/minio:/data
+  #   environment:
+  #     MINIO_ROOT_USER: AKIAIOSFODNN7EXAMPLEs
+  #     MINIO_ROOT_PASSWORD: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEYs
+  #   command: ["server", "/data"]
+  #   networks:
+  #     - fusion-network
+  #   ports:
+  #     - 9090:9090
+  #     - 9000:9000
