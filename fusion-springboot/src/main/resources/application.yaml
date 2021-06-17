@@ -1,4 +1,7 @@
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
   datasource:
     url: jdbc:postgresql://localhost:5432/fusion
     username: pguser
