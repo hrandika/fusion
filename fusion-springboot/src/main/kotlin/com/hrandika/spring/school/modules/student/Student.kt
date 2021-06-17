@@ -1,6 +1,5 @@
 package com.hrandika.spring.school.modules.student
 
-import org.springframework.data.repository.CrudRepository
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -15,5 +14,5 @@ data class Student(
 
     var firstName: String? = null,
     var lastName: String? = null,
-    var email:String? = null
+    var email: String? = null
 )
