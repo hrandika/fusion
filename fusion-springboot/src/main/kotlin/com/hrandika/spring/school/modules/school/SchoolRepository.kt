@@ -1,8 +1,8 @@
-package com.hrandika.spring.school.modules.student
+package com.hrandika.spring.school.modules.school
 
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface StudentRepository : PagingAndSortingRepository<Student, UUID>
+interface SchoolRepository : PagingAndSortingRepository<School, UUID>
